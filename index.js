@@ -2,6 +2,7 @@
 var minimist = require('minimist');
 const { exit } = require('process');
 
+
 var args = minimist(process.argv.slice(2), {
     integer: [ 'port' ],
     boolean: [ 'debug', 'log', 'help' ],
@@ -35,9 +36,12 @@ var args = minimist(process.argv.slice(2), {
 
 const express = require('express');
 const app = express();
-const logdb = require("./database.js");
+const logdb = require("./src/services/database");
 const fs = require('fs');
 const morgan = require('morgan');
+// expose public directory to the web 
+app.use(express.static('./public'));
+app.use(express.json());
 
 const port = args.port || 5555;
 const server = app.listen(port, () => {
