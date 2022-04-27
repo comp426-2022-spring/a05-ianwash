@@ -52,8 +52,8 @@ function flipManyCoins() {
     .then(result => {
         console.log(result);
         // gets summary count
-        const headCount = result.summary.heads;
-        const tailCount = result.summary.tails;
+        let headCount = result.summary.heads;
+        let tailCount = result.summary.tails;
         // handles if the summary is undefined AKA 0 of that type
         if (headCount === undefined) {
             headCount = 0;
@@ -77,3 +77,32 @@ function flipManyCoins() {
 }
 
 // Guess a flip by clicking either heads or tails button
+function guessedHeads() {
+    fetch("http://localhost:5000/app/flip/call/heads")
+    .then((response) => {
+        return response.json();
+    })
+    .then(result => {
+        console.log(result);
+        document.getElementById("coinGuess").setAttribute("src", "./assets/img/" + result.call + ".png");
+        document.getElementById("coinResult").setAttribute("src", "./assets/img/" + result.flip + ".png");
+        document.getElementById("guessResult").innerHTML = "You " + result.result;
+        document.getElementById("guessText").innerHTML = "Your Guess: " + result.call;
+        document.getElementById("resultText").innerHTML = "The Result: " + result.flip;
+    })
+}
+
+function guessedTails() {
+    fetch("http://localhost:5000/app/flip/call/tails")
+    .then((response) => {
+        return response.json();
+    })
+    .then(result => {
+        console.log(result);
+        document.getElementById("coinGuess").setAttribute("src", "./assets/img/" + result.call + ".png");
+        document.getElementById("coinResult").setAttribute("src", "./assets/img/" + result.flip + ".png");
+        document.getElementById("guessResult").innerHTML = "You " + result.result;
+        document.getElementById("guessText").innerHTML = "Your Guess: " + result.call;
+        document.getElementById("resultText").innerHTML = "The Result: " + result.flip;
+    })
+}

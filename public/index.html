@@ -35,11 +35,12 @@
 
     <div id="home">
       <h1>Home</h1>
+      <p>Hey! Three mini games here. The first lets you flip a coin, the next lets you flip MANY coins, and the last lets you place a bet. Happy playing!</p>
     </div>  
 
 
     <div id="single" class="hidden">
-      <h1>Flip a Coin</h1>
+      <h1>Flip One Coin</h1>
       <button onclick="coinFlip()">Flip</button>
       <p>
         <b>Result: </b>
@@ -50,7 +51,7 @@
 
 
     <div id="multi" class="hidden">
-      <h1>Flip Many Coins</h1>
+      <h1>Flip Multiple Coins</h1>
       <form id="flipForm">
           <p>How many flips?</p>
         <input type="number" name="number" id="number" min="0">
@@ -66,7 +67,15 @@
 
 
     <div id="guess" class="hidden">
-      
+      <h1>Guess the Result</h1>
+      <button onclick="guessedHeads()">Heads</button>
+      <button onclick="guessedTails()">Tails</button>
+      <p><b></b></p>
+      <p id="guessResult"><b></b></p>
+      <img src="./assets/img/coin.png" id="coinGuess" height="200" width="200">
+      <p id="guessText"><b></b></p>
+      <img src="./assets/img/coin.png" id="coinResult" height="200" width="200">
+      <p id="resultText"><b></b></p>
     </div>
 	<script src="main.js"></script>
   </body>
